@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Amay</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Bubblegum+Sans&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Quicksand', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none;
+        }
+        body {
+            cursor: none;
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+            position: relative;
+            overflow-x: hidden;
+        }
+        .animated-bg {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                135deg,
+                #fce4ec 0%,
+                #f8bbd0 25%,
+                #fce4ec 50%,
+                #f8bbd0 75%,
+                #fce4ec 100%
+            );
+            animation: moveGradient 15s ease infinite;
+            z-index: -1;
+        }
+        @keyframes moveGradient {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(-25%, -25%); }
+            100% { transform: translate(0, 0); }
+        }
+        .custom-cursor {
+            width: 30px;
+            height: 30px;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            font-size: 24px;
+            transform: translate(-50%, -50%);
+        }
+        .custom-cursor::before {
+            content: '🎀';
+            position: absolute;
+        }
+        .floating {
+            position: absolute;
+            pointer-events: none;
+            animation: float 3s infinite ease-in-out;
+            opacity: 0.6;
+            z-index: 1;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+            z-index: 2;
+        }
+        .card-hover:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 15px 30px rgba(216, 27, 96, 0.2);
+        }
+        .content-container {
+            position: relative;
+            z-index: 2;
+        }
+        .home-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            cursor: none;
+        }
+        .home-button:hover {
+            transform: scale(1.1);
+        }
+        a, button, input, select, textarea {
+            cursor: none;
+        }
+        .page-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+            transform: translateY(100%);
+            z-index: 9998;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .loading-text {
+            font-family: 'Bubblegum Sans', cursive;
+            font-size: 2rem;
+            color: #d81b60;
+            margin-top: 1rem;
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards 0.3s;
+        }
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f8bbd0;
+            border-top: 5px solid #d81b60;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+    <div class="custom-cursor"></div>
+    <div id="decorations"></div>
+    
+    <a href="index.html" class="home-button bg-white/30 backdrop-blur-sm rounded-full p-4 shadow-lg hover:bg-white/40">
+        <i class="fas fa-home text-2xl text-pink-600"></i>
+    </a>
+    
+    <div class="content-container min-h-screen py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="bg-white/20 backdrop-blur-lg rounded-3xl p-8 shadow-xl">
+                <h2 class="text-4xl font-bold text-pink-600 mb-8 text-center" style="font-family: 'Bubblegum Sans', cursive;">
+                    <i class="fas fa-heart mr-3"></i>About Me
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="relative z-10">
+                        <div class="aspect-square rounded-full overflow-hidden border-4 border-pink-300 shadow-xl">
+                            <img src="photo/uvvu.jpg" alt="Profile Picture" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -top-4 -right-4 text-4xl animate-bounce">🍦</div>
+                        <div class="absolute -bottom-4 -left-4 text-4xl animate-bounce delay-100">🐰</div>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-white/30 backdrop-blur-sm rounded-2xl p-6 card-hover">
+                            <h3 class="text-2xl font-bold text-pink-600 mb-4" style="font-family: 'Bubblegum Sans', cursive;">
+                                Hai Everyone!! 👋🏻
+                            </h3>
+                            <p class="text-pink-800 leading-relaxed">
+                                Nama saya Cahya Amaylia Failatul Rohmah. Saya mahasiswi semester 3 yang berkuliah di Universitas Pamulang dengan Program Studi Teknik Informatika.
+                                Di kampus saya mengikuti sebuah Study Club, yaitu Informatics Study Club dengan mengambil peminatan Website Development.
+                            </p>
+                        </div>
+                        
+                        <div class="bg-white/30 backdrop-blur-sm rounded-2xl p-6 card-hover">
+                            <h3 class="text-2xl font-bold text-pink-600 mb-4" style="font-family: 'Bubblegum Sans', cursive;">
+                                What I Do ✨
+                            </h3>
+                            <p class="text-pink-800 leading-relaxed">
+                                Saya mengembangkan situs web responsif dan modern menggunakan HTML, CSS, dan JavaScript.
+                            </p>
+                        </div>
+                        
+                        <div class="bg-white/30 backdrop-blur-sm rounded-2xl p-6 card-hover">
+                            <h3 class="text-2xl font-bold text-pink-600 mb-4" style="font-family: 'Bubblegum Sans', cursive;">
+                                Fun Facts 🌸
+                            </h3>
+                            <ul class="text-pink-800 space-y-2">
+                                <li><i class="fas fa-star mr-2"></i>Saya sangat menyukai warna pink</li>
+                                <li><i class="fas fa-star mr-2"></i>Saya pecinta kelinci</li>
+                                <li><i class="fas fa-star mr-2"></i>Saya menyukai hal-hal lucu</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Kursor Custom disini
+        const cursor = document.querySelector('.custom-cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Buat Dekorasi Mengambang
+        const decorations = document.getElementById('decorations');
+        const decorationSymbols = ['🌷', '🐰', '💗', '🍦', '🎀'];
+        const numDecorations = 30;
+        const gridSize = Math.ceil(Math.sqrt(numDecorations));
+        const cellWidth = window.innerWidth / gridSize;
+        const cellHeight = window.innerHeight / gridSize;
+        
+        for (let i = 0; i < numDecorations; i++) {
+            const decoration = document.createElement('div');
+            decoration.className = 'floating';
+            const gridX = i % gridSize;
+            const gridY = Math.floor(i / gridSize);
+            const randomOffsetX = Math.random() * cellWidth * 0.8;
+            const randomOffsetY = Math.random() * cellHeight * 0.8;
+            decoration.style.left = (gridX * cellWidth + randomOffsetX) + 'px';
+            decoration.style.top = (gridY * cellHeight + randomOffsetY) + 'px';
+            decoration.style.animationDelay = Math.random() * 3 + 's';
+            decoration.textContent = decorationSymbols[Math.floor(Math.random() * decorationSymbols.length)];
+            decoration.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            decorations.appendChild(decoration);
+        }
+
+        // Page transisi buat tombol home
+        document.querySelector('.home-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            const href = this.getAttribute('href');
+            
+            // Buat overlay transisi
+            const overlay = document.createElement('div');
+            overlay.className = 'page-transition';
+            
+            // Buat loading spiner sama text
+            const spinner = document.createElement('div');
+            spinner.className = 'loading-spinner';
+            
+            const loadingText = document.createElement('div');
+            loadingText.className = 'loading-text';
+            loadingText.textContent = '✨ Going Home... ✨';
+            
+            overlay.appendChild(spinner);
+            overlay.appendChild(loadingText);
+            document.body.appendChild(overlay);
+            
+            // overlay animasi Slide Up
+            overlay.style.animation = 'slideUp 0.5s forwards';
+            
+            // Navigasi Setelah animasi
+            setTimeout(() => {
+                window.location.href = href;
+            }, 1200);
+        });
+    </script>
+</body>
+</html>
